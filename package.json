@@ -12,7 +12,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.10"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,5 +22,13 @@
     "express-handlebars": "^8.0.2",
     "morgan": "^1.10.0",
     "node-telegram-bot-api": "^0.66.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bornredjames/unl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bornredjames/unl/issues"
+  },
+  "homepage": "https://github.com/bornredjames/unl#readme"
 }

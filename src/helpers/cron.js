@@ -1,7 +1,7 @@
 import cron from 'cron'
 import https from 'https'
 
-const url = 'https://dolischool-unez.onrender.com'
+const url = 'https://unlock-me.onrender.com'
 const job = new cron.CronJob('*/14 * * * *', function() {
   console.log('Reiniciando...')
   https
