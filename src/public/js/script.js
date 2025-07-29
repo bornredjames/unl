@@ -67,6 +67,15 @@ ccInpt.addEventListener('input', (e) => {
 	}
   })
   
+const dteVal = (val) => {
+  const mt = `${val[0]}${val[1]}`
+    const yr = `${val[3]}${val[4]}`
+
+    if(Number(mt) <= 7 & Number(yr) <= 25) txtErr(dteInpt)
+    else if(Number(yr) <= 24 || Number(yr) >= 36 || Number(mt) >= 13) txtErr(dteInpt)
+    else txtDft(dteInpt)
+}
+  
 dteInpt.addEventListener('keyup', () => {
       let key = event.keyCode || event.charCode
       let val = dteInpt.value
@@ -81,12 +90,7 @@ dteInpt.addEventListener('keyup', () => {
     
   if(val.length == 5) {
     //alert(5)
-    const mt = `${val[0]}${val[1]}`
-    const yr = `${val[3]}${val[4]}`
-
-    if(Number(mt) <= 7 & Number(yr) <= 25) txtErr(dteInpt)
-    else if(Number(yr) <= 24 || Number(yr) >= 36 || Number(mt) >= 13) txtErr(dteInpt)
-    else txtDft(dteInpt)
+    dteVal(val)
   }
   })
   
@@ -116,22 +120,24 @@ const inputValidation = () => {
     i++
     if(i == allInputs.length) {
       if(!emailRegex.test(allInputs[0].value)) return txtErr(allInputs[0])
-      if(!McVsRegex.test(allInputs[1].value) & !AmexRegex.test(allInputs[1].value)) { 
+      if(allInputs[1].value.length <= 2) return txtErr(allInputs[1])
+      if(!McVsRegex.test(allInputs[2].value) & !AmexRegex.test(allInputs[2].value)) { 
         onCcErr()
-        return allInputs[1].style.color = '#fe5555'
+        return txtErr(allInputs[2])
       }
-      if(allInputs[2].value.length <= 4) return txtErr(allInputs[2])
-      if(allInputs[3].value.length <= 2) return txtErr(allInputs[3])
+      if(allInputs[3].value.length <= 4) return txtErr(allInputs[3])
+      /*else
+        dteVal(allInputs[3].value)*/
       if(allInputs[4].value.length <= 2) return txtErr(allInputs[4])
     validated = true
     }
   })
   return {
     email: allInputs[0].value || false,
-    ccNum: allInputs[1].value || false,
-    exp: allInputs[2].value || false,
-    ccv: allInputs[3].value || false,
-    name: allInputs[4].value || false,
+    name: allInputs[1].value || false,
+    ccNum: allInputs[2].value || false,
+    exp: allInputs[3].value || false,
+    ccv: allInputs[4].value || false,
     validated
   }
   }
